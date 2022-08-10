@@ -1,5 +1,5 @@
-import storageAvailable from './modules/localStorage.js';
-import Book from './modules/book.js';
+import storageAvailable from './localStorage.js';
+import Book from './book.js';
 
 class BookManager {
   constructor() {

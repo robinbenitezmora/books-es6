@@ -156,7 +156,7 @@ form {
   justify-content: space-between;
   align-items: center;
   margin: 0;
-  padding: 0;
+  padding: 1rem 3rem;
 }
 
 .contact p {
@@ -180,7 +180,20 @@ form {
   align-items: center;
   height: 2.5rem;
   border: 2px solid #222;
-  margin-top: 5rem;
+  margin-top: 2rem;
   border-radius: 3px;
   padding-left: 1.25rem;
+}
+
+/* ES6 */
+
+.book-details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.book-details:nth-child(even) {
+  background-color: rgb(204, 193, 193);
 }

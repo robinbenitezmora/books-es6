@@ -5,7 +5,7 @@ const bookManager = new BookManager();
 const listBooks = document.querySelector('#book_list');
 
 const deleteItem = (container, id) => {
-  container.deleteBook();
+  listBooks.removeChild(container);
   bookManager.deleteBook(id);
 };
 
@@ -22,6 +22,7 @@ const createItem = (title, author, id) => {
   titleAuthorElement.classList.add('text-title');
 
   deleteButton.innerText = 'Remove';
+  deleteButton.classList.add('delete-button');
 
   deleteButton.addEventListener('click', () => {
     deleteItem(divContainer, id);
@@ -48,8 +49,12 @@ const authorForm = document.getElementById('author');
 
 const addingBook = (e) => {
   e.preventDefault();
-  addItem(bookManager.createBook(titleForm.value, authorForm.value));
-  return false;
+  const title = titleForm.value;
+  const author = authorForm.value;
+  bookManager.createBook(title, author);
+  addItem(bookManager.books[bookManager.books.length - 1]);
+  titleForm.value = '';
+  authorForm.value = '';
 };
 
 const addButtonListener = () => {
@@ -58,7 +63,7 @@ const addButtonListener = () => {
 
 const updateTime = () => {
   const showTime = document.getElementById('date');
-  showTime.innerText = DateTime.local().toLocaleString(DateTime.DATE_FULL);
+  showTime.innerText = DateTime.local().toLocaleString(DateTime.DATETIME_MED);
 };
 
 const startTime = () => {
@@ -68,7 +73,7 @@ const startTime = () => {
 
 const queryBookList = document.getElementById('book_list');
 const queryBookAdd = document.getElementById('books__add');
-const queryBookContact = document.getElementsByClassName('contact');
+const queryBookContact = document.querySelector('.contact');
 
 const queryMenuList = document.getElementById('list');
 const queryMenuAdd = document.getElementById('add-book');
@@ -94,7 +99,7 @@ const clickAdd = (e) => {
   deleteMenu();
   e.target.classList.add('active');
   queryBookList.style.display = 'none';
-  queryBookAdd.style.display = 'block';
+  queryBookAdd.style.display = 'flex';
   queryBookContact.style.display = 'none';
 };
 
@@ -186,41 +191,41 @@ window.addEventListener('load', start);
 //     }
 //   }
 
-//   static deleteBook(element) {
-//     if (element.classList.contains('delete')) {
-//       var catchaName = element.parentElement.parentElement.className;
-//       catchaName = catchaName.split(' ');
-//       catchaName = catchaName[1];
-//       let compareName = catchaName;
-//       let getLocalStorage = JSON.parse(localStorage.getItem('List'));
+  // static deleteBook(element) {
+  //   if (element.classList.contains('delete')) {
+  //     var catchaName = element.parentElement.parentElement.className;
+  //     catchaName = catchaName.split(' ');
+  //     catchaName = catchaName[1];
+  //     let compareName = catchaName;
+  //     let getLocalStorage = JSON.parse(localStorage.getItem('List'));
 
-//       if (compareName === 'elem_0' || compareName === 'elem_1' || compareName === 'elem_2') {
-//         element.parentElement.parentElement.remove();
-//       } else if (getLocalStorage !== null && getLocalStorage.length > 1) {
-//           let loadLocalStore = JSON.parse(localStorage.getItem('List'));
-//           var arrayIs = [];
-//           for (let i = 0; i < loadLocalStore.length; i++) {
-//             let checkValue = loadLocalStore[i].countElemt;
-//             let selectRight = loadLocalStore[i];
-//             if (catchaName !== checkValue) {
-//               arrayIs.push(selectRight);
-//               localStorage.setItem('List', JSON.stringify(arrayIs));
-//             } else {
-//               element.parentElement.parentElement.remove();
-//             }
-//           }
-//       } else {
-//         let loadLocalStoreSnd = JSON.parse(localStorage.getItem('List'));
-//         let oneElement = loadLocalStoreSnd[0].countElemt;
-//           if(catchaName === oneElement) {
-//             var arrayEmpty = [];
-//             localStorage.setItem('List', JSON.stringify(arrayEmpty));
-//           }
-//         element.parentElement.parentElement.remove();
-//       }
-//       element.parentElement.parentElement.remove();
-//     }
-//   }
+  //     if (compareName === 'elem_0' || compareName === 'elem_1' || compareName === 'elem_2') {
+  //       element.parentElement.parentElement.remove();
+  //     } else if (getLocalStorage !== null && getLocalStorage.length > 1) {
+  //         let loadLocalStore = JSON.parse(localStorage.getItem('List'));
+  //         var arrayIs = [];
+  //         for (let i = 0; i < loadLocalStore.length; i++) {
+  //           let checkValue = loadLocalStore[i].countElemt;
+  //           let selectRight = loadLocalStore[i];
+  //           if (catchaName !== checkValue) {
+  //             arrayIs.push(selectRight);
+  //             localStorage.setItem('List', JSON.stringify(arrayIs));
+  //           } else {
+  //             element.parentElement.parentElement.remove();
+  //           }
+  //         }
+  //     } else {
+  //       let loadLocalStoreSnd = JSON.parse(localStorage.getItem('List'));
+  //       let oneElement = loadLocalStoreSnd[0].countElemt;
+  //         if(catchaName === oneElement) {
+  //           var arrayEmpty = [];
+  //           localStorage.setItem('List', JSON.stringify(arrayEmpty));
+  //         }
+  //       element.parentElement.parentElement.remove();
+  //     }
+  //     element.parentElement.parentElement.remove();
+  //   }
+  // }
 
 //   static clearFields() {
 //     document.getElementById('title').value = '';
