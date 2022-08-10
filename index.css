@@ -186,7 +186,6 @@ form {
 }
 
 /* ES6 */
-
 .book-details {
   display: flex;
   justify-content: space-between;
