@@ -6,6 +6,7 @@ class BookManager {
     this.books = [];
     this.id = 0;
   }
+  
   addBook(book) {
     if (book instanceof Book) {
       book.id = this.id;
