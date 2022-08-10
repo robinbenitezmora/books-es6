@@ -6,7 +6,7 @@ class BookManager {
     this.books = [];
     this.id = 0;
   }
-  
+
   addBook(book) {
     if (book instanceof Book) {
       book.id = this.id;
@@ -15,7 +15,7 @@ class BookManager {
       this.updateStoreFormData();
       return book;
     }
-    throw Error(`${book} is not a Book`);
+    throw Error('Book is not an instance of Book');
   }
 
   createBook = (title, author) => {

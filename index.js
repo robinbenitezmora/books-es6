@@ -62,7 +62,15 @@ const addButtonListener = () => {
 
 const updateTime = () => {
   const showTime = document.getElementById('date');
-  showTime.innerText = DateTime.local().toLocaleString(DateTime.DATETIME_MED);
+  const date = new Date();
+  const year = date.getFullYear();
+  const month = date.toLocaleString('en', { month: 'long' });
+  const day = date.getDate();
+  const hour = date.getHours();
+  const minute = date.getMinutes();
+  const second = date.getSeconds();
+  const time = `${month} ${day} ${year}, ${hour}:${minute}:${second}`;
+  showTime.innerText = time;
 };
 
 const startTime = () => {
@@ -124,15 +132,5 @@ const start = () => {
   addButtonListener();
   startTime();
 };
-
-const date = new Date();
-const year = date.getFullYear();
-const month = date.toLocaleString('en', { month: 'long' });
-const day = date.getDate();
-const hour = date.getHours();
-const minute = date.getMinutes();
-const second = date.getSeconds();
-
-document.getElementById('date').innerHTML = `${month} ${day} ${year}, ${hour}:${minute}:${second}`;
 
 window.addEventListener('load', start);
