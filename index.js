@@ -1,4 +1,5 @@
 import BookManager from './modules/bookManager.js';
+import { DateTime } from './modules/luxon.js';
 
 const bookManager = new BookManager();
 const listBooks = document.querySelector('#book_list');
@@ -62,15 +63,8 @@ const addButtonListener = () => {
 
 const updateTime = () => {
   const showTime = document.getElementById('date');
-  const date = new Date();
-  const year = date.getFullYear();
-  const month = date.toLocaleString('en', { month: 'long' });
-  const day = date.getDate();
-  const hour = date.getHours();
-  const minute = date.getMinutes();
-  const second = date.getSeconds();
-  const time = `${month} ${day} ${year}, ${hour}:${minute}:${second}`;
-  showTime.innerText = time;
+  const time = DateTime.local();
+  showTime.innerText = time.toLocaleString(DateTime.DATETIME_MED);
 };
 
 const startTime = () => {
@@ -124,6 +118,11 @@ const addListenersMenu = () => {
   queryMenuAdd.addEventListener('click', clickAdd);
   queryMenuContact.addEventListener('click', clickContact);
 };
+
+const nowDate = DateTime.now();
+const dateS = { month: 'long', day: 'numeric' };
+const showONe = nowDate.setLocale('en-US').toLocaleString(dateS);
+document.getElementById('date').innerHTML = `${showONe} ${nowDate.year}, ${nowDate.c.hour}:${nowDate.c.minute}:${nowDate.c.second}`;
 
 const start = () => {
   bookManager.startStorage();
