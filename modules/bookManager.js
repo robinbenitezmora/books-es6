@@ -13,8 +13,8 @@ class BookManager {
       this.id += 1;
       this.updateStoreFormData();
       return book;
-  }
-  throw Error(`${book} is not a Book`);
+    }
+    throw Error(`${book} is not a Book`);
   }
 
   createBook = (title, author) => {
@@ -23,7 +23,7 @@ class BookManager {
   }
 
   deleteBook = (id) => {
-    this.books = this.books.filter(book => book.id !== id);
+    this.books = this.books.filter((book) => book.id !== id);
     this.updateStoreFormData();
   }
 

@@ -38,7 +38,7 @@ const addItem = (book) => {
 };
 
 const createBookList = () => {
-  bookManager.books.forEach(book => {
+  bookManager.books.forEach((book) => {
     addItem(book);
   });
 };
@@ -110,13 +110,13 @@ const clickContact = (e) => {
   queryBookList.style.display = 'none';
   queryBookAdd.style.display = 'none';
   queryBookContact.style.display = 'block';
-}
+};
 
 const addListenersMenu = () => {
   queryMenuList.addEventListener('click', clickList);
   queryMenuAdd.addEventListener('click', clickAdd);
   queryMenuContact.addEventListener('click', clickContact);
-}
+};
 
 const start = () => {
   bookManager.startStorage();
@@ -124,6 +124,6 @@ const start = () => {
   addListenersMenu();
   addButtonListener();
   startTime();
-}
+};
 
 window.addEventListener('load', start);
