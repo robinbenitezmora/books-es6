@@ -1,5 +1,4 @@
-import { DateTime } from 'luxon';
-import BookManager from './modules/bookManager.js'
+import BookManager from './modules/bookManager.js';
 
 const bookManager = new BookManager();
 const listBooks = document.querySelector('#book_list');
@@ -125,5 +124,15 @@ const start = () => {
   addButtonListener();
   startTime();
 };
+
+const date = new Date();
+const year = date.getFullYear();
+const month = date.toLocaleString('en', { month: 'long' });
+const day = date.getDate();
+const hour = date.getHours();
+const minute = date.getMinutes();
+const second = date.getSeconds();
+
+document.getElementById('date').innerHTML = `${month} ${day} ${year}, ${hour}:${minute}:${second}`;
 
 window.addEventListener('load', start);
