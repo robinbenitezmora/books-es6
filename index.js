@@ -1,5 +1,5 @@
-import { DateTime } from './modules/luxon.js';
-import BookManager from './modules/bookManager.js';
+import { DateTime } from 'luxon';
+import BookManager from './modules/bookManager.js'
 
 const bookManager = new BookManager();
 const listBooks = document.querySelector('#book_list');
